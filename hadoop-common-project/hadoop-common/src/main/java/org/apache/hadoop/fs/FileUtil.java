@@ -347,7 +347,7 @@ public class FileUtil {
     Path src = srcStatus.getPath();
     dst = checkDest(src.getName(), dstFS, dst, overwrite);
     if (srcStatus.isDirectory()) {
-      LOG.info("I am here in if condition")
+      LOG.info("I am here in if condition");
       checkDependencies(srcFS, src, dstFS, dst);
       if (!dstFS.mkdirs(dst)) {
         return false;
@@ -359,7 +359,7 @@ public class FileUtil {
              deleteSource, overwrite, conf);
       }
     } else {
-      LOG.info("I am here in else condition")
+      LOG.info("I am here in else condition");
       InputStream in=null;
       OutputStream out = null;
       try {
