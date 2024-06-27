@@ -1054,7 +1054,7 @@ public class AzureNativeFileSystemStore implements NativeFileSystemStore {
     LOG.info("I am even reaching here!");
     if (dirSet == null) {
       LOG.info("Dir set is null");
-      dirSet = getDirectorySet(KEY_ATOMIC_RENAME_DIRECTORIES);
+      dirSet = new HashSet<>();
     }
 
     Iterator itr = dirSet.iterator();
