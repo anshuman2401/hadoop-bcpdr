@@ -334,6 +334,7 @@ public class FileUtil {
                              boolean deleteSource,
                              boolean overwrite,
                              Configuration conf) throws IOException {
+    LOG.info("I am here, i hope it works!!!");
     FileStatus fileStatus = srcFS.getFileStatus(src);
     return copy(srcFS, fileStatus, dstFS, dst, deleteSource, overwrite, conf);
   }
