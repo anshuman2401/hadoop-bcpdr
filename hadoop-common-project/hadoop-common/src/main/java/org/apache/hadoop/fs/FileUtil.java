@@ -334,6 +334,7 @@ public class FileUtil {
                              boolean deleteSource,
                              boolean overwrite,
                              Configuration conf) throws IOException {
+    LOG.info("I am here in start condition");
     FileStatus fileStatus = srcFS.getFileStatus(src);
     return copy(srcFS, fileStatus, dstFS, dst, deleteSource, overwrite, conf);
   }
@@ -347,7 +348,6 @@ public class FileUtil {
     Path src = srcStatus.getPath();
     dst = checkDest(src.getName(), dstFS, dst, overwrite);
     if (srcStatus.isDirectory()) {
-      LOG.info("I am here in if condition");
       checkDependencies(srcFS, src, dstFS, dst);
       if (!dstFS.mkdirs(dst)) {
         return false;
@@ -365,7 +365,7 @@ public class FileUtil {
       try {
         in = srcFS.open(src);
         out = dstFS.create(dst, overwrite);
-        IOUtils.copyBytes(in, out, conf, true);
+        IOUtils.copyBytes(in, out, conf, false);
       } catch (IOException e) {
         IOUtils.closeStream(out);
         IOUtils.closeStream(in);
