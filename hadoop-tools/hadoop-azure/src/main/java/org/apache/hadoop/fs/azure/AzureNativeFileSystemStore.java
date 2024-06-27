@@ -1057,12 +1057,6 @@ public class AzureNativeFileSystemStore implements NativeFileSystemStore {
       dirSet = new HashSet<>();
     }
 
-    Iterator itr = dirSet.iterator();
-
-    while (itr.hasNext()) {
-      LOG.info("Dir set: " + dirSet);
-    }
-
     for (String dir : dirSet) {
       LOG.info("Dir: " + dir);
       if (dir.isEmpty() || key.startsWith(dir + "/")) {
