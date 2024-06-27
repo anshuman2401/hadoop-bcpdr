@@ -329,12 +329,12 @@ public class FileUtil {
   }
 
   /** Copy files between FileSystems. */
+  // Starting from here
   public static boolean copy(FileSystem srcFS, Path src, 
                              FileSystem dstFS, Path dst, 
                              boolean deleteSource,
                              boolean overwrite,
                              Configuration conf) throws IOException {
-    LOG.info("I am here in start condition");
     FileStatus fileStatus = srcFS.getFileStatus(src);
     return copy(srcFS, fileStatus, dstFS, dst, deleteSource, overwrite, conf);
   }
@@ -359,7 +359,6 @@ public class FileUtil {
              deleteSource, overwrite, conf);
       }
     } else {
-      LOG.info("I am here in else condition");
       InputStream in=null;
       OutputStream out = null;
       try {

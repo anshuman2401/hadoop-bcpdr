@@ -1045,6 +1045,7 @@ public class AzureNativeFileSystemStore implements NativeFileSystemStore {
    */
   @Override
   public boolean isAtomicRenameKey(String key) {
+    LOG.info("Lets check this one");
     return isKeyForDirectorySet(key, atomicRenameDirs);
   }
 
