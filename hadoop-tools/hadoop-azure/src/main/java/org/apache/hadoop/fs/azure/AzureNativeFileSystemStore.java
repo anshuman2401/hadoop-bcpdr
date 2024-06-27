@@ -1059,7 +1059,7 @@ public class AzureNativeFileSystemStore implements NativeFileSystemStore {
 
     for (String dir : dirSet) {
       LOG.info("Dir: " + dir);
-      if (dir.isEmpty() || key.startsWith(dir + "/")) {
+      if (dir == null || dir.isEmpty() || key.startsWith(dir + "/")) {
         return true;
       }
 
