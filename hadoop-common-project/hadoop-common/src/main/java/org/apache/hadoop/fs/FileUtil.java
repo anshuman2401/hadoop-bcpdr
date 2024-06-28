@@ -337,6 +337,7 @@ public class FileUtil {
                              Configuration conf) throws IOException {
     LOG.info("Src Path : " + src + " Dest Path : " + dst);
     FileStatus fileStatus = srcFS.getFileStatus(src);
+    LOG.info("FileStatus: " + fileStatus);
     return copy(srcFS, fileStatus, dstFS, dst, deleteSource, overwrite, conf);
   }
 
@@ -346,6 +347,7 @@ public class FileUtil {
                              boolean deleteSource,
                              boolean overwrite,
                              Configuration conf) throws IOException {
+    LOG.info("Testing copy");
     Path src = srcStatus.getPath();
     dst = checkDest(src.getName(), dstFS, dst, overwrite);
     if (srcStatus.isDirectory()) {
