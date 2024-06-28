@@ -347,11 +347,11 @@ public class FileUtil {
                              boolean deleteSource,
                              boolean overwrite,
                              Configuration conf) throws IOException {
-    LOG.info("Testing copy");
     Path src = srcStatus.getPath();
     dst = checkDest(src.getName(), dstFS, dst, overwrite);
+    LOG.info("Testing dst: " + dst);
     if (srcStatus.isDirectory()) {
-      LOG.info("Testing 1");
+      LOG.info("Testing srcStatus isDirectory");
       checkDependencies(srcFS, src, dstFS, dst);
       if (!dstFS.mkdirs(dst)) {
         return false;
@@ -363,7 +363,7 @@ public class FileUtil {
              deleteSource, overwrite, conf);
       }
     } else {
-      LOG.info("Testing 2");
+      LOG.info("Testing Inside else condition");
       InputStream in=null;
       OutputStream out = null;
       try {
@@ -501,12 +501,15 @@ public class FileUtil {
       boolean overwrite) throws IOException {
     if (dstFS.exists(dst)) {
       FileStatus sdst = dstFS.getFileStatus(dst);
+      LOG.info("Testing Destination file status: " + sdst);
       if (sdst.isDirectory()) {
+        LOG.info("Destination file status is directory");
         if (null == srcName) {
           throw new IOException("Target " + dst + " is a directory");
         }
         return checkDest(null, dstFS, new Path(dst, srcName), overwrite);
       } else if (!overwrite) {
+        LOG.info("Testing Overwrite is false");
         throw new IOException("Target " + dst + " already exists");
       }
     }
