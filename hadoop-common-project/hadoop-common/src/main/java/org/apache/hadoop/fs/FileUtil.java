@@ -351,7 +351,6 @@ public class FileUtil {
     dst = checkDest(src.getName(), dstFS, dst, overwrite);
     LOG.info("Testing dst: " + dst);
     if (srcStatus.isDirectory()) {
-      LOG.info("Testing srcStatus isDirectory");
       checkDependencies(srcFS, src, dstFS, dst);
       if (!dstFS.mkdirs(dst)) {
         return false;
@@ -367,10 +366,14 @@ public class FileUtil {
       InputStream in=null;
       OutputStream out = null;
       try {
+        LOG.info("Testing Inside try block");
         in = srcFS.open(src);
         out = dstFS.create(dst, overwrite);
+        LOG.info("Testing after create");
         IOUtils.copyBytes(in, out, conf, false);
+        LOG.info("Testing after copy bytes");
       } catch (IOException e) {
+        LOG.error("Exception occured while creating file", e);
         IOUtils.closeStream(out);
         IOUtils.closeStream(in);
         throw e;
