@@ -362,15 +362,13 @@ public class FileUtil {
              deleteSource, overwrite, conf);
       }
     } else {
-      LOG.info("Testing Inside else condition");
       InputStream in=null;
       OutputStream out = null;
       try {
-        LOG.info("Testing Inside try block");
         in = srcFS.open(src);
         out = dstFS.create(dst, overwrite);
         LOG.info("Testing after create");
-        IOUtils.copyBytes(in, out, conf, false);
+        IOUtils.copyBytes(in, out, conf, true);
         LOG.info("Testing after copy bytes for file: " + dst);
       } catch (IOException e) {
         LOG.error("Exception occured while creating file", e);
