@@ -371,7 +371,7 @@ public class FileUtil {
         out = dstFS.create(dst, overwrite);
         LOG.info("Testing after create");
         IOUtils.copyBytes(in, out, conf, false);
-        LOG.info("Testing after copy bytes");
+        LOG.info("Testing after copy bytes for file: " + dst);
       } catch (IOException e) {
         LOG.error("Exception occured while creating file", e);
         IOUtils.closeStream(out);
