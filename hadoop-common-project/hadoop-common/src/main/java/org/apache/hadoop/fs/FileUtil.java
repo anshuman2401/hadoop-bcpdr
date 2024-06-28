@@ -349,7 +349,6 @@ public class FileUtil {
                              Configuration conf) throws IOException {
     Path src = srcStatus.getPath();
     dst = checkDest(src.getName(), dstFS, dst, overwrite);
-    LOG.info("Testing dst: " + dst);
     if (srcStatus.isDirectory()) {
       checkDependencies(srcFS, src, dstFS, dst);
       if (!dstFS.mkdirs(dst)) {
@@ -367,11 +366,8 @@ public class FileUtil {
       try {
         in = srcFS.open(src);
         out = dstFS.create(dst, overwrite);
-        LOG.info("Testing after create");
         IOUtils.copyBytes(in, out, conf, true);
-        LOG.info("Testing after copy bytes for file: " + dst);
       } catch (IOException e) {
-        LOG.error("Exception occured while creating file", e);
         IOUtils.closeStream(out);
         IOUtils.closeStream(in);
         throw e;
@@ -502,15 +498,12 @@ public class FileUtil {
       boolean overwrite) throws IOException {
     if (dstFS.exists(dst)) {
       FileStatus sdst = dstFS.getFileStatus(dst);
-      LOG.info("Testing Destination file status: " + sdst);
       if (sdst.isDirectory()) {
-        LOG.info("Destination file status is directory");
         if (null == srcName) {
           throw new IOException("Target " + dst + " is a directory");
         }
         return checkDest(null, dstFS, new Path(dst, srcName), overwrite);
       } else if (!overwrite) {
-        LOG.info("Testing Overwrite is false");
         throw new IOException("Target " + dst + " already exists");
       }
     }
