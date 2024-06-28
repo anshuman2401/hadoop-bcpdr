@@ -18,7 +18,6 @@
 
 package org.apache.hadoop.io;
 
-
 import java.io.*;
 import java.net.Socket;
 import java.nio.ByteBuffer;
@@ -32,12 +31,12 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.util.Shell;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * An utility class for I/O related functionality. 
@@ -55,13 +54,8 @@ public class IOUtils {
    * @param close whether or not close the InputStream and 
    * OutputStream at the end. The streams are closed in the finally clause.  
    */
-
-  private static final Log LOG = LogFactory.getLog(IOUtils.class);
-
-
   public static void copyBytes(InputStream in, OutputStream out, int buffSize, boolean close) 
     throws IOException {
-    LOG.info("Testing Might be here");
     try {
       copyBytes(in, out, buffSize);
       if(close) {
@@ -93,7 +87,6 @@ public class IOUtils {
     while (bytesRead >= 0) {
       out.write(buf, 0, bytesRead);
       if ((ps != null) && ps.checkError()) {
-        LOG.error("Exception occured while write into outpute stream:");
         throw new IOException("Unable to write to output stream.");
       }
       bytesRead = in.read(buf);
@@ -124,7 +117,6 @@ public class IOUtils {
    */
   public static void copyBytes(InputStream in, OutputStream out, Configuration conf, boolean close)
     throws IOException {
-    LOG.info("Testing Inside copyBytes");
     copyBytes(in, out, conf.getInt("io.file.buffer.size", 4096),  close);
   }
 
