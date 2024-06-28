@@ -56,6 +56,7 @@ public class IOUtils {
    */
   public static void copyBytes(InputStream in, OutputStream out, int buffSize, boolean close) 
     throws IOException {
+    LOG.info("Testing Might be here");
     try {
       copyBytes(in, out, buffSize);
       if(close) {
@@ -117,6 +118,7 @@ public class IOUtils {
    */
   public static void copyBytes(InputStream in, OutputStream out, Configuration conf, boolean close)
     throws IOException {
+    LOG.info("Testing Inside copyBytes");
     copyBytes(in, out, conf.getInt("io.file.buffer.size", 4096),  close);
   }
 

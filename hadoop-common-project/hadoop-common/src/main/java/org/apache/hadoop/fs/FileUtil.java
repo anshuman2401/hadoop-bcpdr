@@ -349,6 +349,7 @@ public class FileUtil {
     Path src = srcStatus.getPath();
     dst = checkDest(src.getName(), dstFS, dst, overwrite);
     if (srcStatus.isDirectory()) {
+      LOG.info("Testing 1");
       checkDependencies(srcFS, src, dstFS, dst);
       if (!dstFS.mkdirs(dst)) {
         return false;
@@ -360,6 +361,7 @@ public class FileUtil {
              deleteSource, overwrite, conf);
       }
     } else {
+      LOG.info("Testing 2");
       InputStream in=null;
       OutputStream out = null;
       try {
