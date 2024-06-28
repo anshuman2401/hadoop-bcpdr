@@ -18,6 +18,7 @@
 
 package org.apache.hadoop.io;
 
+
 import java.io.*;
 import java.net.Socket;
 import java.nio.ByteBuffer;
@@ -31,12 +32,12 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.util.Shell;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * An utility class for I/O related functionality. 
