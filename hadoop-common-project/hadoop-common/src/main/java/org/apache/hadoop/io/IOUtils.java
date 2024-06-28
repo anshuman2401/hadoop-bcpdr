@@ -93,7 +93,7 @@ public class IOUtils {
     while (bytesRead >= 0) {
       out.write(buf, 0, bytesRead);
       if ((ps != null) && ps.checkError()) {
-        LOG.error("Exception occured while write into outpute stream: ", e);
+        LOG.error("Exception occured while write into outpute stream:");
         throw new IOException("Unable to write to output stream.");
       }
       bytesRead = in.read(buf);
