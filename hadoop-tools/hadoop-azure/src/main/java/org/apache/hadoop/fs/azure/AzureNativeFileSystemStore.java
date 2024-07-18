@@ -1050,15 +1050,8 @@ public class AzureNativeFileSystemStore implements NativeFileSystemStore {
 
   public boolean isKeyForDirectorySet(String key, Set<String> dirSet) {
     String defaultFS = FileSystem.getDefaultUri(sessionConfiguration).toString();
-//    if (dirSet == null) {
-//      dirSet = new HashSet<>();
-//    }
 
     for (String dir : dirSet) {
-//      if (dir == null || dir.isEmpty() || key.startsWith(dir + "/")) {
-//        return true;
-//      }
-
       if (dir == null || dir.isEmpty() || key.startsWith(dir + "/")) {
         return true;
       }
